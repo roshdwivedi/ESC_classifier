@@ -1,0 +1,178 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Neural Network Filter Analysis Report</title>
+        <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+            h1 { color: #2c3e50; }
+            h2 { color: #3498db; margin-top: 30px; }
+            h3 { color: #2980b9; }
+            .image-container { margin: 20px 0; }
+            .image-container img { max-width: 100%; border: 1px solid #ddd; }
+            .model-section { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+            .comparison-section { background-color: #f9f9f9; padding: 20px; border-radius: 5px; }
+            .filter-analysis { display: flex; flex-wrap: wrap; }
+            .filter-card { margin: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; flex: 1; min-width: 300px; }
+        </style>
+    </head>
+    <body>
+        <h1>Neural Network Filter Analysis Report</h1>
+        <p>This report analyzes the behavior of three different neural network models designed to transform feature maps into spectrogram-like representations. The analysis focuses on how different filters activate for various audio classes and compares the models' approaches.</p>
+    
+        <div class="model-section">
+            <h2>LinearNoBiasSoftplus Model Analysis</h2>
+            
+            <h3>Filter Bank Visualization</h3>
+            <div class="image-container">
+                <img src="LinearNoBiasSoftplus/filter_bank/filter_heatmap.png" alt="LinearNoBiasSoftplus filter heatmap">
+                <p>Heatmap showing the learned filters. X-axis represents input feature index, Y-axis shows filter index.</p>
+            </div>
+            
+            <div class="image-container">
+                <img src="LinearNoBiasSoftplus/filter_bank/individual_filters.png" alt="LinearNoBiasSoftplus individual filters">
+                <p>Individual filter responses showing frequency sensitivity patterns.</p>
+            </div>
+            
+            <h3>Class-specific Activations</h3>
+            <div class="image-container">
+                <img src="LinearNoBiasSoftplus/class_analysis/class_filter_heatmap.png" alt="LinearNoBiasSoftplus class-filter heatmap">
+                <p>Heatmap showing how each filter activates for different classes. Brighter areas indicate stronger activation.</p>
+            </div>
+            
+            <div class="image-container">
+                <img src="LinearNoBiasSoftplus/class_analysis/discriminative_filters.png" alt="LinearNoBiasSoftplus discriminative filters">
+                <p>The most discriminative filters for each class. These filters show the strongest activation patterns that differentiate classes.</p>
+            </div>
+            
+            <h3>Sample Activations</h3>
+            <div class="image-container">
+                <img src="LinearNoBiasSoftplus/activations/sample_activations.png" alt="LinearNoBiasSoftplus sample activations">
+                <p>Activation patterns for specific samples from different classes.</p>
+            </div>
+            
+            <h3>Feature-Filter Correlations</h3>
+            <div class="image-container">
+                <img src="LinearNoBiasSoftplus/correlation/average_correlation.png" alt="LinearNoBiasSoftplus correlation">
+                <p>Correlation between input features and filter activations, showing which input features influence which filters.</p>
+            </div>
+        </div>
+        
+        <div class="model-section">
+            <h2>MelConstrainedLinear Model Analysis</h2>
+            
+            <h3>Filter Bank Visualization</h3>
+            <div class="image-container">
+                <img src="MelConstrainedLinear/filter_bank/filter_heatmap.png" alt="MelConstrainedLinear filter heatmap">
+                <p>Heatmap showing the learned filters. X-axis represents input feature index, Y-axis shows filter index.</p>
+            </div>
+            
+            <div class="image-container">
+                <img src="MelConstrainedLinear/filter_bank/individual_filters.png" alt="MelConstrainedLinear individual filters">
+                <p>Individual filter responses showing frequency sensitivity patterns.</p>
+            </div>
+            
+            <h3>Class-specific Activations</h3>
+            <div class="image-container">
+                <img src="MelConstrainedLinear/class_analysis/class_filter_heatmap.png" alt="MelConstrainedLinear class-filter heatmap">
+                <p>Heatmap showing how each filter activates for different classes. Brighter areas indicate stronger activation.</p>
+            </div>
+            
+            <div class="image-container">
+                <img src="MelConstrainedLinear/class_analysis/discriminative_filters.png" alt="MelConstrainedLinear discriminative filters">
+                <p>The most discriminative filters for each class. These filters show the strongest activation patterns that differentiate classes.</p>
+            </div>
+            
+            <h3>Sample Activations</h3>
+            <div class="image-container">
+                <img src="MelConstrainedLinear/activations/sample_activations.png" alt="MelConstrainedLinear sample activations">
+                <p>Activation patterns for specific samples from different classes.</p>
+            </div>
+            
+            <h3>Feature-Filter Correlations</h3>
+            <div class="image-container">
+                <img src="MelConstrainedLinear/correlation/average_correlation.png" alt="MelConstrainedLinear correlation">
+                <p>Correlation between input features and filter activations, showing which input features influence which filters.</p>
+            </div>
+        </div>
+        
+        <div class="model-section">
+            <h2>MelBasisTransform Model Analysis</h2>
+            
+            <h3>Filter Bank Visualization</h3>
+            <div class="image-container">
+                <img src="MelBasisTransform/filter_bank/filter_heatmap.png" alt="MelBasisTransform filter heatmap">
+                <p>Heatmap showing the learned filters. X-axis represents input feature index, Y-axis shows filter index.</p>
+            </div>
+            
+            <div class="image-container">
+                <img src="MelBasisTransform/filter_bank/individual_filters.png" alt="MelBasisTransform individual filters">
+                <p>Individual filter responses showing frequency sensitivity patterns.</p>
+            </div>
+            
+            <h3>Class-specific Activations</h3>
+            <div class="image-container">
+                <img src="MelBasisTransform/class_analysis/class_filter_heatmap.png" alt="MelBasisTransform class-filter heatmap">
+                <p>Heatmap showing how each filter activates for different classes. Brighter areas indicate stronger activation.</p>
+            </div>
+            
+            <div class="image-container">
+                <img src="MelBasisTransform/class_analysis/discriminative_filters.png" alt="MelBasisTransform discriminative filters">
+                <p>The most discriminative filters for each class. These filters show the strongest activation patterns that differentiate classes.</p>
+            </div>
+            
+            <h3>Sample Activations</h3>
+            <div class="image-container">
+                <img src="MelBasisTransform/activations/sample_activations.png" alt="MelBasisTransform sample activations">
+                <p>Activation patterns for specific samples from different classes.</p>
+            </div>
+            
+            <h3>Feature-Filter Correlations</h3>
+            <div class="image-container">
+                <img src="MelBasisTransform/correlation/average_correlation.png" alt="MelBasisTransform correlation">
+                <p>Correlation between input features and filter activations, showing which input features influence which filters.</p>
+            </div>
+        </div>
+        
+        <div class="comparison-section">
+            <h2>Model Comparison</h2>
+            
+            <div class="image-container">
+                <img src="comparison/activation_comparison.png" alt="Model activation comparison">
+                <p>Comparison of how each model activates on the same input samples.</p>
+            </div>
+            
+            <h3>Class-specific Filter Comparison</h3>
+    
+            <div class="image-container">
+                <img src="comparison/class_animal_sounds_filters.png" alt="animal_sounds filter comparison">
+                <p>Comparison of discriminative filters for class 'animal_sounds' across models.</p>
+            </div>
+        
+            <div class="image-container">
+                <img src="comparison/class_machinery_filters.png" alt="machinery filter comparison">
+                <p>Comparison of discriminative filters for class 'machinery' across models.</p>
+            </div>
+        
+            <div class="image-container">
+                <img src="comparison/class_music_filters.png" alt="music filter comparison">
+                <p>Comparison of discriminative filters for class 'music' across models.</p>
+            </div>
+        
+            <div class="image-container">
+                <img src="comparison/class_noise_filters.png" alt="noise filter comparison">
+                <p>Comparison of discriminative filters for class 'noise' across models.</p>
+            </div>
+        
+            <div class="image-container">
+                <img src="comparison/class_speech_filters.png" alt="speech filter comparison">
+                <p>Comparison of discriminative filters for class 'speech' across models.</p>
+            </div>
+        
+        </div>
+        
+        <h2>Conclusion</h2>
+        <p>This analysis demonstrates how different neural network architectures learn to transform feature maps into spectrograms, highlighting the different filter patterns each model develops and how they respond to different audio classes.</p>
+    </body>
+    </html>
+    
