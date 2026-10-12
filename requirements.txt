@@ -1,0 +1,8 @@
+torch
+numpy
+pandas
+librosa
+colorednoise
+matplotlib
+seaborn
+tqdm
