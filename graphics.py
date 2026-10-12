@@ -57,52 +57,30 @@ def load_models():
     
     return model1, model2, model3
 
+ESC50_CATEGORIES = [
+    "animals",              # targets 0-9
+    "natural_soundscapes",  # targets 10-19
+    "human_non_speech",     # targets 20-29
+    "interior_domestic",    # targets 30-39
+    "exterior_urban",       # targets 40-49
+]
+
+
 def load_class_labels():
-    """
-    Load class labels from filenames or create synthetic ones if not available
-    
-    In a real scenario, this would load actual class labels from a file.
-    For this example, we'll extract class information from filenames or create synthetic labels.
-    """
-    try:
-        # Try to find class labels from feature map filenames
-        files = glob.glob('extracted_features/feature_maps/feature_map_*.npy')
-        class_labels = {}
-        
-        for file in files:
-            # Extract class information from filename
-            filename = os.path.basename(file)
-            # Assuming filename format is feature_map_XXXX_classname.npy
-            parts = filename.replace('feature_map_', '').replace('.npy', '').split('_')
-            
-            if len(parts) >= 2:
-                sample_id = parts[0]
-                class_name = '_'.join(parts[1:])
-                class_labels[sample_id] = class_name
-        
-        if not class_labels:
-            raise FileNotFoundError("Could not extract class labels from filenames")
-            
-        return class_labels
-        
-    except (FileNotFoundError, IndexError):
-        # If real class labels can't be found, create synthetic ones for demonstration
-        print("Creating synthetic class labels for demonstration purposes")
-        
-        # Create 5 synthetic classes
-        synthetic_classes = ["speech", "music", "noise", "animal_sounds", "machinery"]
-        
-        # Get all sample IDs
-        files = glob.glob('extracted_features/feature_maps/feature_map_*.npy')
-        sample_ids = [os.path.basename(f).replace('feature_map_', '').replace('.npy', '').split('_')[0]
-                     for f in files]
-        
-        # Assign synthetic classes
-        class_labels = {}
-        for i, sample_id in enumerate(sample_ids):
-            class_labels[sample_id] = synthetic_classes[i % len(synthetic_classes)]
-            
-        return class_labels
+    """Map each sample to its ESC-50 major category using the target in its filename."""
+    files = glob.glob('extracted_features/feature_maps/feature_map_*.npy')
+    class_labels = {}
+    for file in files:
+        sample_id = os.path.basename(file)[len('feature_map_'):-len('.npy')]
+        try:
+            target = int(sample_id.split('-')[-1])
+        except ValueError:
+            continue
+        if 0 <= target < 50:
+            class_labels[sample_id] = ESC50_CATEGORIES[target // 10]
+    if not class_labels:
+        raise FileNotFoundError("No ESC-50 style feature-map filenames found")
+    return class_labels
 
 def get_filter_activations(model, dataset, class_labels):
     """
